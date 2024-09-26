@@ -6,17 +6,21 @@ import Navbar from './components.js/Navbar';
 import Home from './components.js/Home';
 import EmployeeList from './components.js/EmployeeList';
 import SignInPage from './components.js/SignInPage';
+import ShowEmployee from './components.js/showEmployee';
 
 function App() {
   return (
       <Router>
         <AuthProvider>
           <Navbar />
-          <Routes>
+            <Routes>
+            <Route path='/' element={<SignInPage />} />
             <Route path='/dashboard' element ={<Home />} />
             <Route path='/employeeList' element ={<EmployeeList />} />
             <Route path='/signin' element ={<SignInPage />} />
-          </Routes>
+            <Route path='/showEmployeeList' element= {<ShowEmployee />} />
+            {/* <Route path='/createEmployee' element= {} /> */}
+          </Routes>         
         </AuthProvider>
       </Router>
   );
