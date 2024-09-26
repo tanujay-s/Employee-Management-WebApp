@@ -12,7 +12,7 @@ const Navbar = ()=> {
     return (
         <nav style={style.navbar}>
         <div style={style.logo}>
-          <Link to="/dashboard" style={style.logoLink}>Employee Manager</Link>
+          <Link to="/dashboard" style={style.logoLink}>Employee Management Portal</Link>
         </div>
         <ul style={style.navlinks}>
           <li style={style.navitems}>
@@ -47,15 +47,16 @@ const style = {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '0.5rem 1rem',
-        backgroundColor: '#ffc300',
+        backgroundColor: '#2f3e46',
         color: '#001d3d',
-        height: '50px',
+        height: '60px',
+        marginBottom: '0px'
       },
       logo: {
         fontSize: '1.2rem',
       },
       logoLink: {
-        color: '#001d3d',
+        color: '#fff',
         textDecoration: 'none',
         fontWeight: 'bold',
       },
@@ -71,7 +72,7 @@ const style = {
         alignItems: 'center',
       },
       navLink: {
-        color: '#000814',
+        color: '#fff',
         textDecoration: 'none',
         fontSize: '1rem',
         padding: '0.3rem 0.7rem',
@@ -84,7 +85,7 @@ const style = {
         cursor: 'pointer',
       },
       navtext: {
-        color: '#000814',
+        color: '#fff',
         fontSize: '1rem',
         fontWeight: 'bold',
       }
