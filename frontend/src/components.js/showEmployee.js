@@ -6,18 +6,34 @@ const ShowEmployee = () => {
     const [employees, setEmployees] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredEmployees, setFilteredEmployees] = useState([]);
+    
+    const fetchEmployees = async () => {
+        try {
+            const response = await axios.get('/employee');
+            setEmployees(response.data);
+            setFilteredEmployees(response.data);
+        } catch (error) {
+            console.error('Error fetching employees');
+        }
+    };
+    
     useEffect(() => {
-        const fetchEmployees = async () => {
-            try {
-                const response = await axios.get('/employee');
-                setEmployees(response.data);
-                setFilteredEmployees(response.data);
-            } catch (error) {
-                console.error('Error fetching employees');
-            }
-        };
         fetchEmployees();
     }, []);
+
+    const handleDelete = (employeeID) =>{
+        const deleteEmployee = async ()=> {
+            try{
+                const response = await axios.delete(`/employee/${employeeID}`);
+                alert(response.data.message);
+                fetchEmployees();
+            } catch (error){
+                console.error('Error deleting employee: ', error);
+                alert('Failed to delete employee details');
+            }
+        };
+        deleteEmployee();
+    }
 
     const handleSearch = (e) => {
         const value = e.target.value;
@@ -67,7 +83,17 @@ const ShowEmployee = () => {
                         filteredEmployees.map((employee, index) => (
                             <tr key={employee._id}>
                                 <td style={style.td}>{employee.uniqueId}</td>
-                                <td style={style.td}>{employee.image}</td>
+                                <td style={style.td}>
+                                    {employee.image ? (
+                                        <img 
+                                            src={`data:image/jpeg;base64,${employee.image}`} 
+                                            alt={employee.name} 
+                                            style={style.image} 
+                                        />
+                                    ) : (
+                                        'No Image'
+                                    )}
+                                </td>
                                 <td style={style.td}>{employee.name}</td>
                                 <td style={style.td}>{employee.email}</td>
                                 <td style={style.td}>{employee.mobile}</td>
@@ -76,8 +102,10 @@ const ShowEmployee = () => {
                                 <td style={style.td}>{employee.course}</td>
                                 <td style={style.td}>{new Date(employee.createdAt).toLocaleDateString('en-GB')}</td>
                                 <td style={style.td}>
-                                    <button style={style.button}>Edit</button>
-                                    <button style={style.button}>Delete</button>
+                                    <Link to={`/updateEmployee/${employee._id}`}>
+                                        <button style={{...style.button,backgroundColor:'#0a9396'}} >Edit</button>
+                                    </Link> 
+                                    <button style={{...style.button,backgroundColor:'#d62828'}}  onClick={() => handleDelete(employee._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))
@@ -134,7 +162,7 @@ const style = {
         marginTop: '50px',
     },
     th: {
-        backgroundColor: '#333',
+        backgroundColor: '#495057',
         color: '#fff',
         padding: '10px',
         textAlign: 'left',
@@ -144,6 +172,13 @@ const style = {
         padding: '10px',
         border: '1px solid #ddd',
         textAlign: 'left',
+    },
+    image: {
+        width: '50px',
+        height: '50px',
+        objectFit: 'cover',
+        borderRadius: '50%',
+        marginLeft: '20px'
     },
     button: {
         margin: '0 5px',

@@ -90,3 +90,15 @@ exports.deleteEmployee = async (req, res) =>{
         res.status(500).json({message:'Internal Server error'});
     }
 };
+
+//show specific employee based on id
+exports.getEmployeeById = async (req, res) =>{
+    try{
+        const employeeID= req.params.id;
+        const employeeList = await Employee.findOne({_id: employeeID});
+        res.status(200).json(employeeList);
+    } catch (error){
+        console.error('Error fetching employee details: ', error);
+        res.status(500).json({message:'Internal Server error'});
+    }
+};

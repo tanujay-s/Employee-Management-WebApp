@@ -7,6 +7,8 @@ import Home from './components.js/Home';
 import EmployeeList from './components.js/EmployeeList';
 import SignInPage from './components.js/SignInPage';
 import ShowEmployee from './components.js/showEmployee';
+import CreateEmployee from './components.js/createEmployee';
+import UpdateEmployee from './components.js/UpdateEmployee';
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
             <Route path='/employeeList' element ={<EmployeeList />} />
             <Route path='/signin' element ={<SignInPage />} />
             <Route path='/showEmployeeList' element= {<ShowEmployee />} />
-            {/* <Route path='/createEmployee' element= {} /> */}
+            <Route path='/createEmployee' element= {<CreateEmployee />} />
+            <Route path='/updateEmployee/:id' element={<UpdateEmployee />} />
           </Routes>         
         </AuthProvider>
       </Router>

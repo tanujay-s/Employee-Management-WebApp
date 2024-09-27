@@ -8,6 +8,9 @@ router.post('/',employeeController.createEmployee);
 //show employee list
 router.get('/',employeeController.showEmployeeList);
 
+//show specific employee
+router.get('/:id',employeeController.getEmployeeById);
+
 //update employee list
 router.put('/:id',employeeController.updateEmployee);
 
