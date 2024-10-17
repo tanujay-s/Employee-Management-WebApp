@@ -21,10 +21,13 @@ The **Employee Management System** is a web-based application built using the **
 - **Node.js**: Ensure that Node.js is installed. You can download it [here](https://nodejs.org/).
 - **MongoDB**: Ensure that MongoDB is running locally or use MongoDB Atlas for a cloud-based solution.
 
-## Screenshot
+## Screenshots :-
 ![1](https://github.com/user-attachments/assets/b9c6a84b-43f6-400c-aec4-4ac9e4c3a905)
+..
 ![2](https://github.com/user-attachments/assets/a0ff3d17-2186-461a-bfa2-7e7400ca519c)
+..
 ![3](https://github.com/user-attachments/assets/037114b8-7ad3-4aaf-b7c5-ab44af8115e0)
+..
 ![4](https://github.com/user-attachments/assets/1562a51f-eab1-48be-b6da-52e5e325f978)
 
 ## Getting Started
